@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class BusController {
     private BusPark busPark;
     private ConsoleView view;
-    private Scanner sc;
+    private ConsoleReader reader;
 
     public BusController() {
         busPark = new BusPark(new DataSource().getBusArray());
         view = new ConsoleView();
-        sc = new Scanner(System.in);
+        reader = new ConsoleReader();
     }
 
     public void start() {
@@ -17,7 +17,7 @@ public class BusController {
         outer: while (true){
             view.printMenu();
 
-            inputNumber = sc.nextInt();
+            inputNumber = reader.readInt();
 
             switch (inputNumber) {
                 case 1: {
@@ -27,7 +27,12 @@ public class BusController {
                 case 2: {
                     int routeToFind;
                     view.printMsg("Enter the route what would you like to find:\n-> ");
-                    routeToFind = sc.nextInt();
+                    try {
+                        routeToFind = reader.readInt();
+                    } catch (NumberFormatException e) {
+                        view.printMsg("Incorrect input\n");
+                        break;
+                    }
                     view.printResultBusTable(busPark.getByRouteNumber(routeToFind));
                     break;
                 }
@@ -40,9 +45,12 @@ public class BusController {
                     break;
                 }
                 case 5: break outer;
+                default: {
+                    view.printMsg("Incorrect input\n");
+                    break;
+                }
             }
         }
-        sc.close();
         view.printMsg("Goodbye :)");
     }
 
