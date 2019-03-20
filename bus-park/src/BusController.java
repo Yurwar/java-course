@@ -16,8 +16,12 @@ public class BusController {
 
         outer: while (true){
             view.printMenu();
-
-            inputNumber = reader.readInt();
+            try {
+                inputNumber = reader.readInt();
+            } catch (NumberFormatException e) {
+                view.printMsg("Incorrect input\n");
+                continue;
+            }
 
             switch (inputNumber) {
                 case 1: {
