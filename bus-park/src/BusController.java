@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class BusController {
     private BusPark busPark;
     private ConsoleView view;
@@ -19,7 +17,7 @@ public class BusController {
             try {
                 inputNumber = reader.readInt();
             } catch (NumberFormatException e) {
-                view.printMsg("Incorrect input\n");
+                view.printMsg("\nIncorrect input\n\n");
                 continue;
             }
 
@@ -34,23 +32,39 @@ public class BusController {
                     try {
                         routeToFind = reader.readInt();
                     } catch (NumberFormatException e) {
-                        view.printMsg("Incorrect input\n");
+                        view.printMsg("\nIncorrect input\n\n");
                         break;
                     }
                     view.printResultBusTable(busPark.getByRouteNumber(routeToFind));
                     break;
                 }
                 case 3: {
-                    view.printResultBusTable(busPark.getByExploitation());
+                    int lowerExploitationInteval;
+                    view.printMsg("Enter the lower exploitation time interval:\n-> ");
+                    try {
+                        lowerExploitationInteval = reader.readInt();
+                    } catch (NumberFormatException e) {
+                        view.printMsg("\nIncorrect input\n\n");
+                        break;
+                    }
+                    view.printResultBusTable(busPark.getByExploitation(lowerExploitationInteval));
                     break;
                 }
                 case 4: {
-                    view.printResultBusTable(busPark.getByMileage());
+                    int lowerMileage;
+                    view.printMsg("Enter the lower mileage to find:\n-> ");
+                    try {
+                        lowerMileage = reader.readInt();
+                    } catch (NumberFormatException e) {
+                        view.printMsg("\nIncorrect input\n\n");
+                        break;
+                    }
+                    view.printResultBusTable(busPark.getByMileage(lowerMileage));
                     break;
                 }
                 case 5: break outer;
                 default: {
-                    view.printMsg("Incorrect input\n");
+                    view.printMsg("\nIncorrect input\n\n");
                     break;
                 }
             }

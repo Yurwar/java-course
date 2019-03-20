@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,37 +19,32 @@ public class BusPark {
 
     public Bus[] getByRouteNumber(int routeNumber) {
         int acceptableBusCount = 0;
-        Bus[] resultBusArray;
-        for(Bus bus : buses) {
-            if(bus.getRouteNumber() == routeNumber) {
+        Bus[] resultBusArray = new Bus[buses.length];
+        for (Bus bus : buses) {
+            if (bus.getRouteNumber() == routeNumber) {
+                resultBusArray[acceptableBusCount] = bus;
                 acceptableBusCount++;
             }
         }
         if(acceptableBusCount == 0) {
             return null;
         } else {
-            resultBusArray = new Bus[acceptableBusCount];
-            int i = 0;
-            for(Bus bus : buses) {
-                if(bus.getRouteNumber() == routeNumber) {
-                    resultBusArray[i++] = bus;
-                }
-            }
-            return resultBusArray;
+            return Arrays.copyOf(resultBusArray, acceptableBusCount);
         }
     }
 
-    public Bus[] getByExploitation() {
+    public Bus[] getByExploitation(int lowerDate) {
         int acceptableBusCount = 0;
-        Bus[] resultBusArray;
+        Bus[] resultBusArray = new Bus[buses.length];
 
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
         int currentYear = calendar.get(Calendar.YEAR);
 
-        for(Bus bus : buses) {
-            if(currentYear - bus.getExploitationYearStart() > 10) {
+        for (Bus bus : buses) {
+            if (currentYear - bus.getExploitationYearStart() > lowerDate) {
+                resultBusArray[acceptableBusCount] = bus;
                 acceptableBusCount++;
             }
         }
@@ -56,36 +52,24 @@ public class BusPark {
         if(acceptableBusCount == 0) {
             return null;
         } else {
-            resultBusArray = new Bus[acceptableBusCount];
-            int i = 0;
-            for(Bus bus : buses) {
-                if(currentYear - bus.getExploitationYearStart() > 10) {
-                    resultBusArray[i++] = bus;
-                }
-            }
-            return resultBusArray;
+            return Arrays.copyOf(resultBusArray, acceptableBusCount);
         }
     }
 
-    public Bus[] getByMileage() {
+    public Bus[] getByMileage(int lowerMileage) {
         int acceptableBusCount = 0;
-        Bus[] resultBusArray;
-        for(Bus bus : buses) {
-            if(bus.getMileage() > 100_000) {
+        Bus[] resultBusArray = new Bus[buses.length];
+
+        for (Bus bus : buses) {
+            if (bus.getMileage() > lowerMileage) {
+                resultBusArray[acceptableBusCount] = bus;
                 acceptableBusCount++;
             }
         }
         if(acceptableBusCount == 0) {
             return null;
         } else {
-            resultBusArray = new Bus[acceptableBusCount];
-            int i = 0;
-            for(Bus bus : buses) {
-                if(bus.getMileage() > 100_000) {
-                    resultBusArray[i++] = bus;
-                }
-            }
-            return resultBusArray;
+            return Arrays.copyOf(resultBusArray, acceptableBusCount);
         }
     }
 
