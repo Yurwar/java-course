@@ -1,3 +1,5 @@
+package com.yurwar.model;
+
 public class Driver {
     private String firstName;
     private String lastName;

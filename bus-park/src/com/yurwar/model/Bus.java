@@ -1,3 +1,5 @@
+package com.yurwar.model;
+
 public class Bus {
     private Driver driver;
     private String busNumber;

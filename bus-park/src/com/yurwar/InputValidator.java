@@ -1,3 +1,7 @@
+package com.yurwar;
+
+import com.yurwar.exceptions.NumberOutOfRangeException;
+
 public class InputValidator {
     public static void checkExploitationTimeInterval(int exploitationTimeInteval) throws NumberOutOfRangeException {
         if(exploitationTimeInteval < 0 || exploitationTimeInteval > 100) {

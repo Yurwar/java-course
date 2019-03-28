@@ -1,3 +1,5 @@
+package com.yurwar.exceptions;
+
 public class NumberOutOfRangeException extends Exception {
     private int number;
     public NumberOutOfRangeException(String msg) {
