@@ -22,4 +22,11 @@ public class Driver {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    @Override
+    public String toString() {
+        return String.format(
+                "%-20s",
+                firstName + " " + lastName
+        );
+    }
 }

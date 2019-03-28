@@ -17,6 +17,10 @@ public class BusPark {
         this.buses = buses;
     }
 
+    public void addBus(Bus bus) {
+
+    }
+
     public Bus[] getByRouteNumber(int routeNumber) {
         int acceptableBusCount = 0;
         Bus[] resultBusArray = new Bus[buses.length];
