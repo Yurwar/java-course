@@ -1,3 +1,5 @@
+package com.yurwar.model;
+
 public class Bus {
     private Driver driver;
     private String busNumber;
@@ -17,14 +19,15 @@ public class Bus {
 
     @Override
     public String toString() {
-        return "Bus {\n" +
-                "Driver: " + driver.getFirstName() + " " + driver.getLastName() + '\n' +
-                "Bus number: " + busNumber + '\n' +
-                "Route number: " + routeNumber + '\n' +
-                "Bus brand: " + busBrand + '\n' +
-                "Start year of exploitation: " + exploitationYearStart + '\n' +
-                "Mileage: " + mileage + "km" + '\n' +
-                '}';
+        return String.format(
+                "%-20s%-12s%-14d%-11s%-25d%,8d%n",
+                driver,
+                busNumber,
+                routeNumber,
+                busBrand,
+                exploitationYearStart,
+                mileage
+        );
     }
 
     public Driver getDriver() {

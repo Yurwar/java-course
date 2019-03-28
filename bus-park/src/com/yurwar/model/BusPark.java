@@ -1,3 +1,5 @@
+package com.yurwar.model;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +17,12 @@ public class BusPark {
 
     public void setBuses(Bus[] buses) {
         this.buses = buses;
+    }
+
+    public void addBus(Bus bus) {
+        Bus[] newBusArray = Arrays.copyOf(buses, buses.length + 1);
+        newBusArray[buses.length] = bus;
+        buses = newBusArray;
     }
 
     public Bus[] getByRouteNumber(int routeNumber) {

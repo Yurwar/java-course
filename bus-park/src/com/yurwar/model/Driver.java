@@ -1,3 +1,5 @@
+package com.yurwar.model;
+
 public class Driver {
     private String firstName;
     private String lastName;
@@ -21,5 +23,12 @@ public class Driver {
     public Driver(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    @Override
+    public String toString() {
+        return String.format(
+                "%-20s",
+                firstName + " " + lastName
+        );
     }
 }

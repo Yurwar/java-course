@@ -1,3 +1,5 @@
+package com.yurwar;
+
 import java.io.InputStream;
 import java.util.Scanner;
 

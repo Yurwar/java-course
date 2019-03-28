@@ -1,3 +1,8 @@
+package com.yurwar;
+
+import com.yurwar.model.Bus;
+import com.yurwar.model.Driver;
+
 public class DataSource {
     private Bus[] busArray = {
             new Bus(new Driver("Bruce", "Robertson"), "AB 0652 AA", 35, "Hyundai", 2003, 389_465),
