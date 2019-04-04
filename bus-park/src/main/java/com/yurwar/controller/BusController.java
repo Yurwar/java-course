@@ -1,101 +1,1 @@
-package com.yurwar.controller;
-
-import com.yurwar.exceptions.NumberOutOfRangeException;
-import com.yurwar.model.BusPark;
-import com.yurwar.view.ConsoleView;
-import com.yurwar.*;
-
-public class BusController {
-    private BusPark busPark;
-    private ConsoleView view;
-    private ConsoleReader reader;
-
-    public BusController() {
-        busPark = new BusPark(new DataSource().getBusArray());
-        view = new ConsoleView();
-        reader = new ConsoleReader();
-    }
-
-    public void start() {
-        int inputNumber;
-
-        outer: while (true){
-            view.printMenu();
-            try {
-                inputNumber = reader.readInt();
-            } catch (NumberFormatException e) {
-                view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);
-                continue;
-            }
-
-            switch (inputNumber) {
-                case 1: {
-                    view.printResultBusTable(busPark.getBuses());
-                    break;
-                }
-                case 2: {
-                    int routeToFind;
-                    view.printMsg("Enter the route what would you like to find:\n-> ");
-
-                    try {
-                        routeToFind = reader.readInt();
-                        InputValidator.checkRouteNumberRange(routeToFind);
-                    } catch (NumberFormatException e) {
-                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);
-                        break;
-                    } catch (NumberOutOfRangeException e) {
-                        view.printMsg('\n' + e.getMessage() + "\nYour route: " + e.getNumber() + "\n\n");
-                        break;
-                    }
-
-                    view.printResultBusTable(busPark.getByRouteNumber(routeToFind));
-                    break;
-                }
-                case 3: {
-                    int lowerExploitationInterval;
-                    view.printMsg("Enter the lower exploitation time interval in years:\n-> ");
-
-                    try {
-                        lowerExploitationInterval = reader.readInt();
-                        InputValidator.checkExploitationTimeInterval(lowerExploitationInterval);
-                    } catch (NumberFormatException e) {
-                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);
-                        break;
-                    } catch (NumberOutOfRangeException e) {
-                        view.printMsg('\n' + e.getMessage() + "\nYour time interval: " + e.getNumber() + "\n\n");
-                        break;
-                    }
-
-                    view.printResultBusTable(busPark.getByExploitation(lowerExploitationInterval));
-                    break;
-                }
-                case 4: {
-                    int lowerMileage;
-                    view.printMsg("Enter the lower mileage to find:\n-> ");
-
-                    try {
-                        lowerMileage = reader.readInt();
-                        InputValidator.checkMileageRange(lowerMileage);
-                    } catch (NumberFormatException e) {
-                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);
-                        break;
-                    } catch (NumberOutOfRangeException e) {
-                        view.printMsg('\n' + e.getMessage() + "\nYour mileage: " + e.getNumber() + "\n\n");
-                        break;
-                    }
-
-                    view.printResultBusTable(busPark.getByMileage(lowerMileage));
-                    break;
-                }
-                case 5: break outer;
-                default: {
-                    view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);
-                    break;
-                }
-            }
-        }
-        view.printMsg(ConsoleView.FINAL_MSG);
-    }
-
-
-}
+package com.yurwar.controller;import com.yurwar.exceptions.NumberOutOfRangeException;import com.yurwar.model.Bus;import com.yurwar.model.BusPark;import com.yurwar.view.ConsoleView;import com.yurwar.*;import java.io.FileNotFoundException;import java.io.IOException;import java.text.DateFormat;import java.text.SimpleDateFormat;import java.util.Date;public class BusController {    private BusPark busPark;    private ConsoleView view;    private ConsoleReader reader;    private JSONFileOperator jsonFileOperator;    public BusController() {        jsonFileOperator = new JSONFileOperator("Bus_park.json", "Final_result.json");        busPark = new BusPark();        view = new ConsoleView();        reader = new ConsoleReader();    }    public void start() {        try {            busPark.setBuses(jsonFileOperator.read());        } catch (FileNotFoundException e) {            view.printMsg(ConsoleView.FILE_NOT_FOUND_MSG);            return;        } catch (IOException e) {            view.printMsg("\nCan not fill the table\n\n");            return;        }        int inputNumber;        outer: while (true){            view.printMsg(ConsoleView.MENU);            try {                inputNumber = reader.readInt();            } catch (NumberFormatException e) {                view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);                continue;            }            Bus[] resArr;            switch (inputNumber) {                case 1: {                    view.printResultBusTable(busPark.getBuses());                    break;                }                case 2: {                    int routeToFind;                    view.printMsg("Enter the route what would you like to find:\n-> ");                    try {                        routeToFind = reader.readInt();                        InputValidator.checkRouteNumberRange(routeToFind);                    } catch (NumberFormatException e) {                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);                        break;                    } catch (NumberOutOfRangeException e) {                        view.printMsg('\n' + e.getMessage() + "\nYour route: " + e.getNumber() + "\n\n");                        break;                    }                    resArr = busPark.getByRouteNumber(routeToFind);                    view.printResultBusTable(resArr);                    saveResults(resArr);                    break;                }                case 3: {                    int lowerExploitationInterval;                    view.printMsg("Enter the lower exploitation time interval in years:\n-> ");                    try {                        lowerExploitationInterval = reader.readInt();                        InputValidator.checkExploitationTimeInterval(lowerExploitationInterval);                    } catch (NumberFormatException e) {                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);                        break;                    } catch (NumberOutOfRangeException e) {                        view.printMsg('\n' + e.getMessage() + "\nYour time interval: " + e.getNumber() + "\n\n");                        break;                    }                    resArr = busPark.getByExploitation(lowerExploitationInterval);                    view.printResultBusTable(resArr);                    saveResults(resArr);                    break;                }                case 4: {                    int lowerMileage;                    view.printMsg("Enter the lower mileage to find:\n-> ");                    try {                        lowerMileage = reader.readInt();                        InputValidator.checkMileageRange(lowerMileage);                    } catch (NumberFormatException e) {                        view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);                        break;                    } catch (NumberOutOfRangeException e) {                        view.printMsg('\n' + e.getMessage() + "\nYour mileage: " + e.getNumber() + "\n\n");                        break;                    }                    resArr = busPark.getByMileage(lowerMileage);                    view.printResultBusTable(resArr);                    saveResults(resArr);                    break;                }                case 5:  {                    try {                        jsonFileOperator.write(busPark.getBuses());                    } catch (IOException e) {                        view.printMsg(ConsoleView.CAN_NOT_WRITE_FILE);                    }                    break outer;                }                default: {                    view.printMsg(ConsoleView.INCORRECT_INPUT_MSG);                    break;                }            }        }        view.printMsg(ConsoleView.FINAL_MSG);    }    private void saveResults(Bus[] resultArr) {        if(resultArr == null || resultArr.length == 0) {            return;        }        view.printMsg("Do you want to save the result?(y/N)\n-> ");        String condition = reader.readString();        if(condition.equalsIgnoreCase("y") || condition.equalsIgnoreCase("yes")) {            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");            try {                jsonFileOperator.write(resultArr, "Results-" + dateFormat.format(new Date()) + ".json");            } catch (IOException e) {                view.printMsg(ConsoleView.CAN_NOT_WRITE_FILE);            }        }    }}

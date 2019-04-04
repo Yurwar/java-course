@@ -11,6 +11,8 @@ public class BusPark {
         this.buses = buses;
     }
 
+    public BusPark() {}
+
     public Bus[] getBuses() {
         return buses;
     }

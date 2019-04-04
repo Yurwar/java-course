@@ -1,113 +1,111 @@
-{
-  "buses": [
-    {
-      "driver": {
-        "firstName":"Bruce",
-        "lastName":"Robertson"
-      },
-      "busNumber":"AB 0652 AA",
-      "routeNumber":35,
-      "busBrand":"Hyundai",
-      "exploitationYearStart":2003,
-      "mileage":389465},
-    {
-      "driver": {
-        "firstName":"Boris",
-        "lastName":"Jones"
-      },
-      "busNumber":"AE 0012 AB",
-      "routeNumber":26,
-      "busBrand":"Isuzu",
-      "exploitationYearStart":2017,
-      "mileage":96455
+[
+  {
+    "driver": {
+      "firstName":"Bruce",
+      "lastName":"Robertson"
     },
-    {
-      "driver": {
-        "firstName":"Carl",
-        "lastName":"Murphy"
-      },
-      "busNumber":"AA 9112 TK",
-      "routeNumber":26,
-      "busBrand":"Mercedes",
-      "exploitationYearStart":2007,
-      "mileage":180971
+    "busNumber":"AB 0652 AA",
+    "routeNumber":35,
+    "busBrand":"Hyundai",
+    "exploitationYearStart":2003,
+    "mileage":389465},
+  {
+    "driver": {
+      "firstName":"Boris",
+      "lastName":"Jones"
     },
-    {
-      "driver": {
-        "firstName":"Cliff",
-        "lastName":"Birds"
-      },
-      "busNumber":"BI 2792 BT",
-      "routeNumber":228,
-      "busBrand":"Daewoo",
-      "exploitationYearStart":2018,
-      "mileage":41378
+    "busNumber":"AE 0012 AB",
+    "routeNumber":26,
+    "busBrand":"Isuzu",
+    "exploitationYearStart":2017,
+    "mileage":96455
+  },
+  {
+    "driver": {
+      "firstName":"Carl",
+      "lastName":"Murphy"
     },
-    {
-      "driver": {
-        "firstName":"Curtis",
-        "lastName":"Cook"
-      },
-      "busNumber":"BH 0200 BM",
-      "routeNumber":102,
-      "busBrand":"Solaris",
-      "exploitationYearStart":2001,
-      "mileage":453164
+    "busNumber":"AA 9112 TK",
+    "routeNumber":26,
+    "busBrand":"Mercedes",
+    "exploitationYearStart":2007,
+    "mileage":180971
+  },
+  {
+    "driver": {
+      "firstName":"Cliff",
+      "lastName":"Birds"
     },
-    {
-      "driver":{
-        "firstName":"Dexter",
-        "lastName":"Round"
-      },
-      "busNumber":"BH 7777 TP",
-      "routeNumber":102,
-      "busBrand":"PAZ",
-      "exploitationYearStart":1983,
-      "mileage":956179
+    "busNumber":"BI 2792 BT",
+    "routeNumber":228,
+    "busBrand":"Daewoo",
+    "exploitationYearStart":2018,
+    "mileage":41378
+  },
+  {
+    "driver": {
+      "firstName":"Curtis",
+      "lastName":"Cook"
     },
-    {
-      "driver":{
-        "firstName":"James",
-        "lastName":"Allford"
-      },
-      "busNumber":"BE 9175 CH",
-      "routeNumber":465,
-      "busBrand":"Isuzu",
-      "exploitationYearStart":2004,
-      "mileage":301506
+    "busNumber":"BH 0200 BM",
+    "routeNumber":102,
+    "busBrand":"Solaris",
+    "exploitationYearStart":2001,
+    "mileage":453164
+  },
+  {
+    "driver":{
+      "firstName":"Dexter",
+      "lastName":"Round"
     },
-    {
-      "driver":{
-        "firstName":"Matthew",
-        "lastName":"Turner"
-      },
-      "busNumber":"AE 4564 AB",
-      "routeNumber":437,
-      "busBrand":"Iveco",
-      "exploitationYearStart":2009,
-      "mileage":135145
+    "busNumber":"BH 7777 TP",
+    "routeNumber":102,
+    "busBrand":"PAZ",
+    "exploitationYearStart":1983,
+    "mileage":956179
+  },
+  {
+    "driver":{
+      "firstName":"James",
+      "lastName":"Allford"
     },
-    {
-      "driver":{
-        "firstName":"Norman",
-        "lastName":"Young"
-      },
-      "busNumber":"AB 8980 AA",
-      "routeNumber":587,
-      "busBrand":"Volvo",
-      "exploitationYearStart":2015,
-      "mileage":91862
+    "busNumber":"BE 9175 CH",
+    "routeNumber":465,
+    "busBrand":"Isuzu",
+    "exploitationYearStart":2004,
+    "mileage":301506
+  },
+  {
+    "driver":{
+      "firstName":"Matthew",
+      "lastName":"Turner"
     },
-    {
-      "driver":{
-        "firstName":"Roger",
-        "lastName":"Gill"
-      },
-      "busNumber":"AA 6556 AB",
-      "routeNumber":35,
-      "busBrand":"LAZ",
-      "exploitationYearStart":1992,
-      "mileage":743784
-    }
-  ]
-}
+    "busNumber":"AE 4564 AB",
+    "routeNumber":437,
+    "busBrand":"Iveco",
+    "exploitationYearStart":2009,
+    "mileage":135145
+  },
+  {
+    "driver":{
+      "firstName":"Norman",
+      "lastName":"Young"
+    },
+    "busNumber":"AB 8980 AA",
+    "routeNumber":587,
+    "busBrand":"Volvo",
+    "exploitationYearStart":2015,
+    "mileage":91862
+  },
+  {
+    "driver":{
+      "firstName":"Roger",
+      "lastName":"Gill"
+    },
+    "busNumber":"AA 6556 AB",
+    "routeNumber":35,
+    "busBrand":"LAZ",
+    "exploitationYearStart":1992,
+    "mileage":743784
+  }
+]

@@ -1,6 +1,8 @@
 package com.yurwar;
 
+import com.yurwar.exceptions.BusNumberFormatException;
 import com.yurwar.exceptions.NumberOutOfRangeException;
+import java.util.regex.Pattern;
 
 public class InputValidator {
     public static void checkExploitationTimeInterval(int exploitationTimeInteval) throws NumberOutOfRangeException {
@@ -22,6 +24,11 @@ public class InputValidator {
             throw new NumberOutOfRangeException(
                     "Input mileage out of range from 1 to 10,000,000", mileage
             );
+        }
+    }
+    public static void checkBusNumberFormat(String busNumber) throws BusNumberFormatException {
+        if(!Pattern.matches("[A-Z]{2}\\s\\d{4}\\s[A-Z]{2}", busNumber)) {
+            throw new BusNumberFormatException("Incorrect bus number format", busNumber);
         }
     }
 }
