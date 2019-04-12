@@ -26,12 +26,17 @@ public class ConsoleView {
             "%n%s%n%n",
             "Incorrect input"
     );
+    public static final String FILE_NOT_FOUND_MSG = String.format(
+            "%n%s%n%n",
+            "File with data not found"
+    );
+    public static final String CAN_NOT_WRITE_FILE = String.format(
+            "%n%s%n%n",
+            "Can not write to the file"
+    );
 
     public static final String FINAL_MSG = String.format("%n%s", "Goodbye :)");
 
-    public void printMenu() {
-        System.out.print(MENU);
-    }
     public void printResultBusTable(Bus[] busArray) {
         if(busArray == null || busArray.length == 0) {
             System.out.println("\nNo matching results found\n");

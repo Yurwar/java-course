@@ -11,7 +11,12 @@ public class ConsoleReader {
         inputStream = System.in;
         sc = new Scanner(inputStream);
     }
+
     public int readInt() throws NumberFormatException {
         return Integer.parseInt(sc.next());
+    }
+
+    public String readString() {
+        return sc.next();
     }
 }

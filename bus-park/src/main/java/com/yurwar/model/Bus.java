@@ -1,5 +1,9 @@
 package com.yurwar.model;
 
+import com.yurwar.InputValidator;
+import com.yurwar.exceptions.BusNumberFormatException;
+import com.yurwar.exceptions.NumberOutOfRangeException;
+
 public class Bus {
     private Driver driver;
     private String busNumber;
@@ -8,7 +12,9 @@ public class Bus {
     private int exploitationYearStart;
     private int mileage;
 
-    public Bus(Driver driver, String busNumber, int routeNumber, String busBrand, int exploitationYearStart, int mileage) {
+    public Bus(Driver driver, String busNumber,
+               int routeNumber, String busBrand,
+               int exploitationYearStart, int mileage) {
         this.driver = driver;
         this.busNumber = busNumber;
         this.routeNumber = routeNumber;
@@ -35,6 +41,9 @@ public class Bus {
     }
 
     public void setDriver(Driver driver) {
+        if(driver == null) {
+            throw new NullPointerException();
+        }
         this.driver = driver;
     }
 
@@ -42,7 +51,8 @@ public class Bus {
         return busNumber;
     }
 
-    public void setBusNumber(String busNumber) {
+    public void setBusNumber(String busNumber) throws BusNumberFormatException {
+        InputValidator.checkBusNumberFormat(busNumber);
         this.busNumber = busNumber;
     }
 
@@ -50,7 +60,8 @@ public class Bus {
         return routeNumber;
     }
 
-    public void setRouteNumber(int routeNumber) {
+    public void setRouteNumber(int routeNumber) throws NumberOutOfRangeException {
+        InputValidator.checkRouteNumberRange(routeNumber);
         this.routeNumber = routeNumber;
     }
 
@@ -74,7 +85,8 @@ public class Bus {
         return mileage;
     }
 
-    public void setMileage(int mileage) {
+    public void setMileage(int mileage) throws NumberOutOfRangeException {
+        InputValidator.checkMileageRange(mileage);
         this.mileage = mileage;
     }
 }
