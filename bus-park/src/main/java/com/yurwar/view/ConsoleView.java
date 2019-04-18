@@ -2,7 +2,7 @@ package com.yurwar.view;
 
 import com.yurwar.model.Bus;
 
-public class ConsoleView {
+public class ConsoleView implements View {
     public static final String MENU = String.format(
             "%s%n%s%n%s%n%s%n%s%n%s%n%s",
             "Choose what do you want to do:",
