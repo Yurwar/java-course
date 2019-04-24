@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration Status="WARN">
+    <Appenders>
+        <Console name="consoleAppender">
+            <PatternLayout pattern="%-5level{WARN=Warning, DEBUG=Debug, ERROR=Error, TRACE=Trace, INFO=Info}: %msg%n"/>
+        </Console>
+        <RollingFile name="fileAppender" filePattern="logs/bus-park-%i.log" fileName="logs/bus-park.log">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="max" max="5"/>
+            <PatternLayout pattern="%d{dd-MM HH:mm:ss,SSS} [%t] %-5level %c{36} - %msg%n"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger level="TRACE" name="com.yurwar.controller.BusController" />
+        <Root level="WARN">
+            <AppenderRef ref="fileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

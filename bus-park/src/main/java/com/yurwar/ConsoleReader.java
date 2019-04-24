@@ -3,7 +3,7 @@ package com.yurwar;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class ConsoleReader {
+public class ConsoleReader implements Reader {
     private Scanner sc;
     private InputStream inputStream;
 

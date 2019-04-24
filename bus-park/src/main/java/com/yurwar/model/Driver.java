@@ -1,5 +1,7 @@
 package com.yurwar.model;
 
+import java.util.Objects;
+
 public class Driver {
     private String firstName;
     private String lastName;
@@ -30,5 +32,19 @@ public class Driver {
                 "%-20s",
                 firstName + " " + lastName
         );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Driver)) return false;
+        Driver driver = (Driver) o;
+        return getFirstName().equals(driver.getFirstName()) &&
+                getLastName().equals(driver.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
     }
 }

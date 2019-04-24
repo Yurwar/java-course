@@ -1,9 +1,13 @@
 package com.yurwar;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yurwar.model.Bus;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class JSONFileOperator implements FileOperator {
     private Gson parser;

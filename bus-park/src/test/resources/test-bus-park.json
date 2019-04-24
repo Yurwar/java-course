@@ -1,0 +1,34 @@
+[
+  {
+    "driver": {
+      "firstName":"Bruce",
+      "lastName":"Robertson"
+    },
+    "busNumber":"AB 0652 AA",
+    "routeNumber":35,
+    "busBrand":"Hyundai",
+    "exploitationYearStart":2003,
+    "mileage":389465},
+  {
+    "driver": {
+      "firstName":"Boris",
+      "lastName":"Jones"
+    },
+    "busNumber":"AE 0012 AB",
+    "routeNumber":26,
+    "busBrand":"Isuzu",
+    "exploitationYearStart":2017,
+    "mileage":96455
+  },
+  {
+    "driver": {
+      "firstName":"Carl",
+      "lastName":"Murphy"
+    },
+    "busNumber":"AA 9112 TK",
+    "routeNumber":26,
+    "busBrand":"Mercedes",
+    "exploitationYearStart":2007,
+    "mileage":180971
+  }
+]

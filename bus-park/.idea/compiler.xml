@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bus-park" target="1.8" />
+      <module name="bus-park" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
