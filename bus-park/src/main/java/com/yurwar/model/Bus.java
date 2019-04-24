@@ -4,6 +4,8 @@ import com.yurwar.InputValidator;
 import com.yurwar.exceptions.BusNumberFormatException;
 import com.yurwar.exceptions.NumberOutOfRangeException;
 
+import java.util.Objects;
+
 public class Bus {
     private Driver driver;
     private String busNumber;
@@ -88,5 +90,23 @@ public class Bus {
     public void setMileage(int mileage) throws NumberOutOfRangeException {
         InputValidator.checkMileageRange(mileage);
         this.mileage = mileage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bus)) return false;
+        Bus bus = (Bus) o;
+        return routeNumber == bus.routeNumber &&
+                exploitationYearStart == bus.exploitationYearStart &&
+                mileage == bus.mileage &&
+                driver.equals(bus.driver) &&
+                busNumber.equals(bus.busNumber) &&
+                busBrand.equals(bus.busBrand);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver, busNumber, routeNumber, busBrand, exploitationYearStart, mileage);
     }
 }
