@@ -33,8 +33,8 @@ public class Point {
         if (this == o) return true;
         if (!(o instanceof Point)) return false;
         Point point = (Point) o;
-        return Double.compare(point.getX(), getX()) == 0 &&
-                Double.compare(point.getY(), getY()) == 0;
+        return point.getX() == getX() &&
+                point.getY() == getY();
     }
 
     @Override
