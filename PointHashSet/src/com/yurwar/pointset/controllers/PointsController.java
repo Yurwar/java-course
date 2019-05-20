@@ -33,10 +33,11 @@ public class PointsController {
                     pointsView.printMsg("Creating " + amountOfSets + " sets with " + amountOfPoints + " points in it\n");
                     pointsSetsModel = new PointsHashSets(amountOfSets, amountOfPoints);
                 } else {
-                    throw new IllegalArgumentException("\n\nIncorrect input\n");
+                    throw new IllegalArgumentException("\nIncorrect input\n");
                 }
             } catch (IllegalArgumentException e) {
                 pointsView.printMsg(e.getMessage());
+                return;
             }
             pointsView.printMsg("Generating random sets of points\n");
             pointsSetsModel.generateRandomSets();
